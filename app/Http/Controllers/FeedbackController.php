@@ -33,12 +33,11 @@ class FeedbackController extends Controller
     }
 
     public function getFeedbacks(Request $request) { 
-        // $user = Auth::user();
+        $user = Auth::user();
 
-        // if ($user->role != 1) { 
-        //     return response()->json(['message' => 'Not allowed'], 401);
-        // }
-
+        if ($user->role != 1) { 
+            return response()->json(['message' => 'Not allowed'], 401);
+        }
         return Feedback::all();
     }
 
